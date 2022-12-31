@@ -11,7 +11,7 @@
 @File  : MySQL_Helper_1.0(beta4-release).py
 @author: Fiee920
 @Feedback: 2356854247@qq.com
-@Time  : 2022/12/31 12:14
+@Time  : 2022/12/31 12:50
 '''
 import re
 
@@ -281,6 +281,10 @@ class logic:
                     return Splicing(keySet)
             else:
                 return Splicing(keySet)
+        if "Modify" in keySet:
+            if len(keySet) > 2:
+                if "Table" in keySet:
+                    keySet.pop(keySet.index("Table"))
         if "Search" in keySet:
             if len(keySet) > 2:
                 if "Table" in keySet:
@@ -296,6 +300,7 @@ class logic:
                 return Splicing(keySet)
             else:
                 return Splicing(keySet)
+        return Splicing(keySet)
 
         pass
 
@@ -492,7 +497,7 @@ class produce:
         """
         举例：
         ·给表%demo%全部列添加数据=数据1=数据2=...... [keyword: 全部列, 添加数据]
-        ·给表%demo%的%列名1%%列名2%......添加数据=数据1=数据2[<可选项:>+=数据1=数据2]=...... [keyword: 列, 添加数据]
+        ·给表%demo%的%列名1%%列名2%......添加数据=数据1=数据2[<可选项:>+=数据1=数据2]=...... [keyword: 列, 添加数据]  # TODO
         ·给表%demo%添加数据=数据1=数据2=+=数据1=数据2[<可选项:>+=数据1=数据2]=...... [keyword: 添加数据]
         :param words:
         :return:
